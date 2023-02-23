@@ -1,0 +1,53 @@
+'''
+>> import models
+>>> lion = models.Animal(name='lion', habitat='savannah')
+>>> lion.name   
+'lion'
+>>> lion.habitat
+'savannah'
+>>> models.session.add(lion)
+>>> models.session.commit()
+>>> lion.id
+1
+>>> lion.name
+'lion'
+>>> lion_log = models.Logbook(animal_id=1, notes="great pouncer")
+>>> models.session.add(lion_log)
+>>> models.session.commit()
+>>> lion_log.id
+1
+>>> lion.log.animal
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'Animal' object has no attribute 'log'
+>>> lion_log.animal
+
+
+Animal 1
+    Name = lion
+    Habitat = savannah
+
+>>> lion.logs
+[
+
+Logbook 1
+    Animal ID = 1
+    Notes = great pouncer
+    ]
+>>> lion_log2 = models.Logbook(animal_id=1, notes="really likes meat")
+>>> models.session.add(lion_log2)
+>>> models.session.commit()
+>>> lion.logs
+[
+
+Logbook 1
+    Animal ID = 1
+    Notes = great pouncer
+    ,
+
+Logbook 2
+    Animal ID = 1
+    Notes = really likes meat
+    ]
+>>>
+'''

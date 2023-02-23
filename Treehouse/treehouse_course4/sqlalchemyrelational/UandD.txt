@@ -1,0 +1,141 @@
+C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>python -m venv env
+
+C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>.\env\Scripts\activate
+
+(env) C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>python3
+
+(env) C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>pip install sqlalchemy
+Requirement already satisfied: sqlalchemy in c:\users\gabri\onedrive\coding\treehouse\treehouse_course4\sqlalchemy relational\env\lib\site-packages (2.0.0)
+Requirement already satisfied: typing-extensions>=4.2.0 in c:\users\gabri\onedrive\coding\treehouse\treehouse_course4\sqlalchemy relational\env\lib\site-packages (from sqlalchemy) (4.4.0)
+Requirement already satisfied: greenlet!=0.4.17; platform_machine == "aarch64" or (platform_machine == "ppc64le" or (platform_machine == "x86_64" or (platform_machine == "amd64" or (platform_machine == "AMD64" or (platform_machine == "win32" or platform_machine == "WIN32"))))) in c:\users\gabri\onedrive\coding\treehouse\treehouse_course4\sqlalchemy relational\env\lib\site-packages (from sqlalchemy) (2.0.2)
+WARNING: You are using pip version 20.2.3; however, version 23.0 is available.
+You should consider upgrading via the 'c:\users\gabri\onedrive\coding\treehouse\treehouse_course4\sqlalchemy relational\env\scripts\python.exe -m pip install --upgrade pip' command.
+
+(env) C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>python3
+
+(env) C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>python
+Python 3.9.0 (tags/v3.9.0:9cf6752, Oct  5 2020, 15:34:40) [MSC v.1927 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import models
+>>> seal_log = models.Logbook(animal_id=2, notes="likes to wave")
+>>> models.session.add(seal_log)
+>>> models.session.commit()
+>>> seal_log.id
+3
+>>> seal_log.animas
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'Logbook' object has no attribute 'animas'
+>>> seal_log.animal     
+>>> print(seal_log.animal)
+None
+>>> wombat = models.Animal(name="wombat", habitat="forest")
+>>> models.session.add(wombat)
+>>> models.session.commit()
+>>> seal_log.animal        
+
+
+Animal 2
+    Name = wombat
+    Habitat = forest
+
+>>> lion = models.session.query(models.Animal).filter(models.Animal.name=="lion").first()
+>>>
+>>> lion.name
+'lion'
+>>> wombat = models.session.query(models.Animal).filter(models.Animal.name=="wombat").first()
+>>>
+>>> wombat.name
+'wombat'
+>>> lion_log = models.session.query(models.Logbook).filter(models.Logbook.animal_id==1).first()
+>>>
+>>> lion_log.notes
+'great pouncer'
+>>> seal_log = models.session.query(models.Logbook).filter(models.Logbook.animal_id==2).first()
+>>>
+>>> seal_log.notes
+'likes to wave'
+>>> lion.habitat = "grasslands"
+>>> lion.habitat
+'grasslands'
+>>> models.session.dirty
+IdentitySet([
+
+Animal 1
+    Name = lion
+    Habitat = grasslands
+    ])
+>>> models.session.commit()
+>>> lion_log.animal
+
+
+Animal 1
+    Name = lion
+    Habitat = grasslands
+
+>>> seal = wombat
+>>> seal.name
+'wombat'
+>>> seal.name="seal"
+>>> seal.habitat = "ocean"
+>>> seal_log.animal
+
+
+Animal 2
+    Name = seal
+    Habitat = ocean
+
+>>> models.session.commit()
+>>> seal_log.animal_id = 1
+>>> seal_log.animal
+
+
+Animal 1
+    Name = lion
+    Habitat = grasslands
+
+>>> lion.logs
+[
+
+Logbook 1
+    Animal ID = 1
+    Notes = great pouncer
+    ,
+
+Logbook 2
+    Animal ID = 1
+    Notes = really likes meat
+    ,
+
+Logbook 3
+    Animal ID = 1
+    Notes = likes to wave
+    ]
+>>> seal_log.animal_id = 2
+>>> seal.logs
+[
+
+Logbook 3
+    Animal ID = 2
+    Notes = likes to wave
+    ]
+>>> models.session.commit()
+>>> models.session.delete(seal)
+>>> models.session.commit()
+>>> print(seal_log)
+
+
+Logbook 3
+    Animal ID = None
+    Notes = likes to wave
+
+>>> models.session.delete(lion_log)
+>>> models.session.commit()
+>>> lion.logs
+[
+
+Logbook 2
+    Animal ID = 1
+    Notes = really likes meat
+    ]
+>>>

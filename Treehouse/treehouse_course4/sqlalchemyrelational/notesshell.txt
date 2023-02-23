@@ -1,0 +1,70 @@
+C:\sqlite>sqlite3.exe C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational\zoo.db
+SQLite version 3.40.1 2022-12-28 14:03:47
+Enter ".help" for usage hints.
+sqlite> select * from animals;
+1|lion|savannah
+sqlite> .tables
+animals  logbook
+sqlite> select * from animals;
+1|lion|savannah
+sqlite> .exit
+
+C:\sqlite>cd C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational
+
+C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>dir
+ El volumen de la unidad C es Windows-SSD
+ El número de serie del volumen es: 86F2-F694
+
+ Directorio de C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational
+
+31.01.2023  15:00    <DIR>          .
+31.01.2023  15:08    <DIR>          ..
+31.01.2023  15:00    <DIR>          env
+31.01.2023  15:13             1’460 models.py
+31.01.2023  08:19                62 requirements.txt
+31.01.2023  11:31               998 shell.txt
+31.01.2023  11:27            12’288 zoo.db
+31.01.2023  15:00    <DIR>          __pycache__
+               4 archivos         14’808 bytes
+               4 dirs  22’190’424’064 bytes libres
+
+C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>python -m venv env
+
+C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>.\env\Scripts\activate
+
+(env) C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>python3
+
+(env) C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>pip install sqlalchemy
+Requirement already satisfied: sqlalchemy in c:\users\gabri\onedrive\coding\treehouse\treehouse_course4\sqlalchemy relational\env\lib\site-packages (2.0.0)
+Requirement already satisfied: typing-extensions>=4.2.0 in c:\users\gabri\onedrive\coding\treehouse\treehouse_course4\sqlalchemy relational\env\lib\site-packages (from sqlalchemy) (4.4.0)
+Requirement already satisfied: greenlet!=0.4.17; platform_machine == "aarch64" or (platform_machine == "ppc64le" or (platform_machine == "x86_64" or (platform_machine == "amd64" or (platform_machine == "AMD64" or (platform_machine == "win32" or platform_machine == "WIN32"))))) in c:\users\gabri\onedrive\coding\treehouse\treehouse_course4\sqlalchemy relational\env\lib\site-packages (from sqlalchemy) (2.0.2)
+WARNING: You are using pip version 20.2.3; however, version 23.0 is available.
+You should consider upgrading via the 'c:\users\gabri\onedrive\coding\treehouse\treehouse_course4\sqlalchemy relational\env\scripts\python.exe -m pip install --upgrade pip' command.
+
+(env) C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>python3
+
+(env) C:\Coding\Treehouse\treehouse_course4\sqlalchemyrelational>python
+Python 3.9.0 (tags/v3.9.0:9cf6752, Oct  5 2020, 15:34:40) [MSC v.1927 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import models
+>>> seal_log = models.Logbook(animal_id=2, notes="likes to wave")
+>>> models.session.add(seal_log)
+>>> models.session.commit()
+>>> seal_log.id
+3
+>>> seal_log.animas
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'Logbook' object has no attribute 'animas'
+>>> seal_log.animal     
+>>> print(seal_log.animal)
+None
+>>> wombat = models.Animal(name="wombat", habitat="forest")
+>>> models.session.add(wombat)
+>>> models.session.commit()
+>>> seal_log.animal        
+
+
+Animal 2
+    Name = wombat
+    Habitat = forest
