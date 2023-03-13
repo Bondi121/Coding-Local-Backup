@@ -1,0 +1,35 @@
+function onFormSubmit(e) {
+  // Get form responses
+  var responses = e.values;
+  
+  // Get the sheet and range for the chart
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1"); // Replace "Sheet1" with your sheet name
+  var range = sheet.getRange("A9:I46"); // Replace "A1:B5" with your chart range
+  
+  // Create chart
+  var chart = sheet.newChart()
+    .setChartType(Charts.ChartType.LINE)
+    .addRange(range)
+    .setPosition(1, 3, 0, 0)
+    .build();
+  
+  // Create email message
+  var message = "New form submission:\n\n";
+  for (var i = 0; i < responses.length; i++) {
+    message += responses[i] + "\n";
+  }
+  var imageData = chart.getAs('image/png').getBytes();
+  var image = {
+    fileName: 'chart.png',
+    content: imageData,
+    mimeType: 'image/png'
+  };
+  
+  // Send email with chart
+  MailApp.sendEmail({
+    to: "recipient@example.com",
+    subject: "New form submission",
+    body: message,
+    attachments: [image]
+  });
+}
