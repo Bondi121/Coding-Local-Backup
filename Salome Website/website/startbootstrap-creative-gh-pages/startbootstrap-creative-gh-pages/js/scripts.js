@@ -56,4 +56,22 @@ window.addEventListener('DOMContentLoaded', event => {
         elements: '#portfolio a.portfolio-box'
     });
 
+    const darkModeButton = document.getElementById('dark-mode-button');
+    const body = document.querySelector('body');
+    let isDarkModeOn = false;
+
+    if (darkModeButton) {
+        darkModeButton.addEventListener('click', () => {
+            if (isDarkModeOn) {
+                body.classList.remove('dark-mode');
+                darkModeButton.textContent = 'Dark Mode';
+                isDarkModeOn = false;
+            } else {
+                body.classList.add('dark-mode');
+                darkModeButton.textContent = 'Light Mode';
+                isDarkModeOn = true;
+            }
+        });
+    }
+
 });
