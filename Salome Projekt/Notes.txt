@@ -1,0 +1,20 @@
+Notes:
+
+- In the Result section you can see the median value of all the categories, please provide a similar graph in the response PDF
+
+- On the right hand side you see each question and the answer in a bar graph. Make sure these are displayed in different yellow shades, similar to the ones I 	made. 
+
+- The results from the form responses1 tab should be automated. Please make sure all the questions in graphs are fully readable.
+
+- Please make sure that questions can be added without messing up the formula. 
+
+- Results of the graphics should be saved as a pdf and send as an email to the survey taker.	
+
+- Please make sure that user info can be viewed and selected within the google sheet file in a drop down menu
+
+- There will be 4 forms in total. The strucutre will be identitcal, everything will be the same with the expecption of the color theme (this one is yellow). For now we are just working on one, after that the process we will identical for the remaining forms.
+
+- Please use Google Script for automation if possible and provide the Javascript code.
+
+
+

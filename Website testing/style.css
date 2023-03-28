@@ -1,0 +1,21 @@
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .toggle-switch {
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  body.dark-mode {
+    background-color: #222;
+    color: #fff;
+  }
+  
